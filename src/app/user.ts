@@ -5,7 +5,7 @@ export class User{
     username: String;
     password: String;
     email: String;
-    firstname: String;
-    lastname: String;
+    firstName: String;
+    lastName: String;
     postList: Post[];
 }
