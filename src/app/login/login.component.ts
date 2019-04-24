@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserCredentialService } from '../services/user-credential.service';
 import { User } from '../user';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -14,47 +17,48 @@ export class LoginComponent implements OnInit {
   passW: string;
   user: User;
   _message: string = "";
-  constructor(private usercredentialservice: UserCredentialService) {
+  loginForm: FormGroup;
+  submitted: boolean = false;
+  returnUrl: string;
+
+  constructor(private usercredentialservice: UserCredentialService, private formBuilder: FormBuilder,
+    private router: Router, private route: ActivatedRoute) {
   }
-  getIsLoginPage(): boolean{
+
+  ngOnInit() {
+    this.user = new User();
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
+  }
+
+  get f() {return this.loginForm.controls;}
+
+  getIsLoginPage(): boolean {
     return this.isOnLoginPage;
   }
 
-  authenticateUser(){
-    console.log("We are here 1" + this.userN);
-    this.user.username = this.userN;
-    console.log("We are here 2 " + this.passW);
-    this.user.password = this.passW;
-    
-    this.usercredentialservice.authenticate(this.user).then(res =>
-     {
-       console.log("response id: " + res.id); 
-      this.user.id = res.id;
-      console.log("response firstName: " + res.firstName);
-      this.user.firstName = res.firstName;
-      console.log("response lastName: " + res.lastName);
-      this.user.lastName = res.lastName;
-      console.log("response email: " + res.email);
-      this.user.email = res.email;
-      console.log("Success here");
-      this._message = this.usercredentialservice._message;
-      if(this.user.id != null){
-        console.log("We are here 5.1 ");
-        window.location.assign("home");
+  onLogin(){
+    console.log("We are here 1");
+    this.submitted = true;
+    this.user.username = this.f.username.value;
+    console.log("we are here 2");
+    this.user.password = this.f.password.value;
+    console.log("we are here 3");
+    if(this.loginForm.invalid){
+      return;
+    }
+    this.usercredentialservice.login(this.user.username, this.user.password).pipe(first()).subscribe(
+      data => {
+        if(data != null && data.id > 0)
+        this.router.navigate(["home"]);
+        else console.log("No user");
+      },
+      error => {
+        console.log(error);
       }
-      else{
-        console.log("We are here 5.2 ")
-        window.location.reload(true);
-      }
-     }
-      );
-    console.log("AuthenticateUser is finished");
+    )
   }
-  sendToRegister(){
-    window.location.assign("register");
-  }
-  ngOnInit() {
-    this.user = new User();
-  }
-
 }

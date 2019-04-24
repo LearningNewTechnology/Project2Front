@@ -1,18 +1,49 @@
 <div class="container">
   <div class="row">
-      <div class="col-md-12 text-center">
-        <h1>New User Registration</h1>
-      </div>
     <div class="col-md-12 text-center">
-      <form method="GET" action="./login">
-        <input type="text" name="username" value="Username" /> <br />
-        <input type="text" name="email" value="Email" /> <br />
-        <input type="text" name="firstname" value="First Name" /> <br />
-        <input type="text" name="lastname" value="Last Name" /> <br />
-        <input type="text" name="password" value="Password" /> <br />
-        <input type="text" name="confirmpassword" value="Confirm Password" /> <br />
-        <button type="submit">Register</button>
-      </form>
+      <h1>New User Registration</h1>
     </div>
+    <form [formGroup]="registerForm">
+      <div class="col-md-12 text-center form-group">
+        <input type="text" placeholder="Username" formControlName="username"
+          [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+          <div *ngIf="f.username.errors.required">Username is required</div>
+        </div>
+        <br />
+        <div class="col-md-12 text-center form-group">
+          <input type="text" placeholder="Email" formControlName="email"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" /> <br />
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">Incorrect Email Format</div>
+          </div>
+        </div>
+        <div class="col-md-12 text-center form-group">
+          <input type="text" placeholder="First Name" formControlName="firstName"
+            [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" /> <br />
+          <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+          </div>
+        </div>
+        <div class="col-md-12 text-center form-group">
+          <input type="text" placeholder="Last Name" formControlName="lastName"
+            [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" /> <br />
+          <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+          </div>
+        </div>
+        <div class="col-md-12 text-center form-group">
+          <input type="text" placeholder="Password" formControlName="password"
+            [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" /> <br />
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+            <div *ngIf="f.password.errors.maxlength">Password must be at most 20 characters</div>
+          </div>
+        </div>
+        <button class="btn btn-md" id="register_button" (click)="registerUser()">Register</button>
+      </div>
+    </form>
   </div>
 </div>

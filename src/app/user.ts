@@ -2,10 +2,10 @@ import { Post } from './post';
 
 export class User{
     id: number;
-    username: String;
-    password: String;
-    email: String;
-    firstName: String;
-    lastName: String;
+    username: string;
+    password: string;
+    email: string;
+    firstName: string;
+    lastName: string;
     postList: Post[];
 }
