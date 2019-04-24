@@ -16,7 +16,7 @@ export class UserCredentialService {
   public currentUser: Observable<User>;
   
   constructor(private httpServ: HttpClient, private localStorage: LocalStorageService) { 
-    this.currentUserObject = new BehaviorSubject<User>(JSON.parse(localStorage.checkUser()));
+    this.currentUserObject = new BehaviorSubject<User>(JSON.parse(localStorage.getUser()));
     this.currentUser = this.currentUserObject.asObservable();
   }
 

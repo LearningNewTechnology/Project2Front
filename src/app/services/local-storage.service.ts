@@ -17,6 +17,9 @@ export class LocalStorageService {
     this.httpServ.get<any>('http://localhost:8080/logout.do', {headers});
   }
   checkUser() {
+    return localStorage.getItem('User') !== null;
+  }
+  getUser() {
     return localStorage.getItem('User');
   }
 }
