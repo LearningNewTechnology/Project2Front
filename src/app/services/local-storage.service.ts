@@ -9,7 +9,6 @@ export class LocalStorageService {
 
   constructor(private httpServ: HttpClient) { }
   saveUser(userInfo: User){
-    console.log("2:  " + JSON.stringify(userInfo));
     localStorage.setItem('User', JSON.stringify(userInfo));
   }
   logout(){
@@ -18,7 +17,7 @@ export class LocalStorageService {
     this.httpServ.get<any>('http://localhost:8080/logout.do', {headers});
   }
   checkUser() {
-    return localStorage.getItem('User') !== null;
+    return localStorage.getItem('User') !== null && localStorage.getItem('User') != undefined;
   }
   getUser() {
     return localStorage.getItem('User');

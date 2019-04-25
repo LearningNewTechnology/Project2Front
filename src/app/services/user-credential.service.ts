@@ -35,6 +35,7 @@ export class UserCredentialService {
     .pipe(map(user1 =>{
       console.log(user1);
       if (user1 !==null && user1 !== undefined){
+        if(user1.id > 0)
         this.localStorage.saveUser(user1);
         this.currentUserObject.next(user1);
       }
