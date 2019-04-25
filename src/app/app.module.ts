@@ -13,6 +13,7 @@ import {FormsModule} from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { EditUserComponent } from './edit-user/edit-user.component'
+import { ViewInfoComponent } from './view-info/view-info.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { EditUserComponent } from './edit-user/edit-user.component'
     NavbarComponent,
     RegisterComponent,
     HomeComponent,
-    EditUserComponent
+    EditUserComponent,
+    ViewInfoComponent
   ],
   imports: [
     BrowserModule,
