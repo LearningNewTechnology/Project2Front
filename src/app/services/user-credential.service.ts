@@ -20,6 +20,10 @@ export class UserCredentialService {
     this.currentUser = this.currentUserObject.asObservable();
   }
 
+  public get currentUserValue(){
+    return this.currentUserObject.value;
+  }
+
   login(usernameInput: string, passwordInput: string) {
     const headers = new HttpHeaders({ 'Access-Control-Allow-Origin': '*' }).set('content-type', 'application/json');
     var body =
