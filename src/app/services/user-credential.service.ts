@@ -33,7 +33,8 @@ export class UserCredentialService {
     };
     return this.httpServ.post<any>(this.loginUrl, body, {headers})
     .pipe(map(user1 =>{
-      if (user1 && user1.token){
+      console.log(user1);
+      if (user1 !==null && user1 !== undefined){
         this.localStorage.saveUser(user1);
         this.currentUserObject.next(user1);
       }
