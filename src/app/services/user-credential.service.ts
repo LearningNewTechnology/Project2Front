@@ -31,6 +31,7 @@ export class UserCredentialService {
     .pipe(map(user1 =>{
       if (user1 && user1.token){
         this.localStorage.saveUser(user1);
+        console.log(this.localStorage.saveUser(user1))
         this.currentUserObject.next(user1);
       }
       return user1;
