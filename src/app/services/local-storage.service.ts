@@ -14,6 +14,7 @@ export class LocalStorageService {
   logout(){
     const headers = new HttpHeaders({ 'Access-Control-Allow-Origin': '*' });
     localStorage.removeItem('User');
+    localStorage.removeItem('searchResult');
     this.httpServ.get<any>('http://localhost:8080/logout.do', {headers});
   }
   checkUser() {
@@ -21,5 +22,11 @@ export class LocalStorageService {
   }
   getUser() {
     return localStorage.getItem('User');
+  }
+  saveSearchResult(searchResult: User[]){
+    localStorage.setItem('searchResult', JSON.stringify(searchResult));
+  }
+  getSearchResult(){
+    return localStorage.getItem('searchResult');
   }
 }

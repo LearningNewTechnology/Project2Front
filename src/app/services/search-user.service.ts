@@ -15,8 +15,6 @@ export class SearchUserService {
   constructor(private httpServ: HttpClient) { }
 
   searchByUsername(usernameInput: string){
-
-    console.log("11:  ", this.searchByUsernameUrl + "?username=" + usernameInput);
     const headers = new HttpHeaders({ 'Access-Control-Allow-Origin': '*' }).set('content-type', 'application/json');
     return this.httpServ.get<any>(this.searchByUsernameUrl + "?username=" + usernameInput, {headers});
   }
