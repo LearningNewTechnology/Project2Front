@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class SearchUserService {
 
-  searchByUsernameUrl = "http://localhost:8080/searchUsers.do";
+  searchByUsernameUrl = "http://localhost:8080/Project2/searchUsers.do";
   private currentUserObject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
   constructor(private httpServ: HttpClient) { }

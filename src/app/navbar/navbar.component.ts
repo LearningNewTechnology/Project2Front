@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit {
   }
   searchByUsername(){
     console.log(this.searchText.controls.userInput.value);
-    let temp = this.searchServ.searchByUsername(this.searchText.controls.userInput.value).pipe(first())
+    let temp = this.searchServ.searchByUsername(this.searchText.controls.userInput.value)
       .subscribe(
         data => {
           console.log(data);

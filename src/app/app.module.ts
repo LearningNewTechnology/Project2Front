@@ -13,7 +13,8 @@ import {FormsModule} from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { EditUserComponent } from './edit-user/edit-user.component'
-import { ViewInfoComponent } from './view-info/view-info.component'
+import { ViewInfoComponent } from './view-info/view-info.component';
+import { ViewSearchResultComponent } from './view-search-result/view-search-result.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ViewInfoComponent } from './view-info/view-info.component'
     RegisterComponent,
     HomeComponent,
     EditUserComponent,
-    ViewInfoComponent
+    ViewInfoComponent,
+    ViewSearchResultComponent
   ],
   imports: [
     BrowserModule,
