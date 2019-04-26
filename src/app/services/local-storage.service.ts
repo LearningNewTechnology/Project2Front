@@ -29,4 +29,7 @@ export class LocalStorageService {
   getSearchResult(){
     return localStorage.getItem('searchResult');
   }
+  deleteSearchResult(){
+    localStorage.removeItem('searchResult');
+  }
 }

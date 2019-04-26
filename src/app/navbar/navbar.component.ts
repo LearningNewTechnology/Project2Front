@@ -5,8 +5,7 @@ import { Router } from '@angular/router';
 import { SearchUserService } from '../services/search-user.service';
 import { FormGroup, FormBuilder} from '@angular/forms';
 import { User } from '../user';
-import { map, first } from 'rxjs/operators';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
+
 
 @Component({
   selector: 'app-navbar',
@@ -23,6 +22,12 @@ export class NavbarComponent implements OnInit {
   checkForUser(): boolean{
     return this.sessionService.checkUser();
   }
+
+  viewUserInfo(){
+    this.sessionService.deleteSearchResult();
+    this.router.navigate(["viewInfo"]);
+  }
+
   searchByUsername(){
     console.log(this.searchText.controls.userInput.value);
     let temp = this.searchServ.searchByUsername(this.searchText.controls.userInput.value)

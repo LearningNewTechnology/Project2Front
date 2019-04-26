@@ -14,6 +14,9 @@
         <li>
           <a class="nav-link" *ngIf="checkForUser()" (click)="logout()">Logout</a>
         </li>
+        <li>
+          <a class="nav-link" *ngIf="checkForUser()" (click)="viewUserInfo()">View Profile</a>
+        </li>
       </ul>
 
       <form class="form-inline my-8 my-lg-12" *ngIf="checkForUser()" [formGroup]="searchText">
