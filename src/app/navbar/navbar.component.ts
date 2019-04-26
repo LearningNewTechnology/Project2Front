@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { LocalStorageService } from '../services/local-storage.service';
 import { Router } from '@angular/router';
+import { SearchUserService } from '../services/search-user.service';
+import { FormGroup, FormBuilder} from '@angular/forms';
+import { User } from '../user';
+import { map, first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -10,22 +14,37 @@ import { Router } from '@angular/router';
   providers: [LoginComponent]
 })
 export class NavbarComponent implements OnInit {
-  private isLoggedIn: boolean;
-  
-  constructor(private sessionService: LocalStorageService, private router: Router) {
+  searchText: FormGroup;
+
+  constructor(private sessionService: LocalStorageService, private formBuilder: FormBuilder, private router: Router, private searchServ: SearchUserService) {
   }
 
   checkForUser(): boolean{
-    this.isLoggedIn = this.sessionService.checkUser() != null || this.sessionService.checkUser() != undefined;
-    return this.isLoggedIn;
-  }
+    return this.sessionService.checkUser();
 
+  }
+  searchByUsername(){
+    console.log(this.searchText.controls.userInput.value);
+    let temp = this.searchServ.searchByUsername(this.searchText.controls.userInput.value).pipe(first())
+      .subscribe(
+        data => {
+          console.log(data);
+        },
+        error =>{
+          console.log(error);
+        }
+      );
+    console.log("13:  " + temp);
+  }
   logout(){
     this.sessionService.logout();
     this.router.navigate(["login"]);
   }
 
   ngOnInit() {
+    this.searchText = this.formBuilder.group({
+        userInput: ['']
+    });
   }
 
 }

@@ -42,21 +42,16 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(){
-    console.log("We are here 1");
     this.submitted = true;
     this.user.username = this.f.username.value;
-    console.log("we are here 2");
     this.user.password = this.f.password.value;
-    console.log("we are here 3");
     if(this.loginForm.invalid){
       return;
     }
     this.usercredentialservice.login(this.user.username, this.user.password).pipe(first()).subscribe(
       data => {
-        console.log("0:  " + data);
         if(data !== null && data.id > 0)
           {
-            console.log("1:  " + this.localStorageServ.getUser());
             this.router.navigate(["home"]);
           }
         else console.log("No user");

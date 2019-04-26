@@ -13,16 +13,11 @@ export class SearchUserService {
   private currentUserObject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
   constructor(private httpServ: HttpClient) { }
+
   searchByUsername(usernameInput: string){
+
+    console.log("11:  ", this.searchByUsernameUrl + "?username=" + usernameInput);
     const headers = new HttpHeaders({ 'Access-Control-Allow-Origin': '*' }).set('content-type', 'application/json');
-    var body =
-    {
-      username: usernameInput
-    };
-    return this.httpServ.post<any>(this.searchByUsernameUrl, body, {headers})
-    .pipe(map(userList =>{
-      console.log(userList);
-      return userList;
-    }))
+    return this.httpServ.get<any>(this.searchByUsernameUrl + "?username=" + usernameInput, {headers});
   }
 }
