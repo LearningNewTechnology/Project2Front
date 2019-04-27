@@ -33,7 +33,6 @@ export class UserCredentialService {
     };
     return this.httpServ.post<any>(this.loginUrl, body, {headers})
     .pipe(map(user1 =>{
-      console.log(user1);
       if (user1 !==null && user1 !== undefined){
         if(user1.id > 0)
         this.localStorage.saveUser(user1);
@@ -44,25 +43,7 @@ export class UserCredentialService {
     }))
   }
 
-  // authenticate(user: User): Promise<User> {
-  //   console.log("We are here 3");
-  //   console.log("user.username " + user.username);
-  //   console.log("user.password " + user.password);
-  //   const headers = new HttpHeaders({ 'Access-Control-Allow-Origin': '*' }).set('content-type', 'application/json');
-  //   var body =
-  //   {
-  //     username: user.username,
-  //     password: user.password
-  //   };
-  //   console.log("We are here 4");
-  //   console.log("body username " + body.username);
-  //   console.log("body passowrd " + body.password);
-  //   return this.httpServ.post<User>(this.loginUrl, body, { headers }).pipe(map(res => res as User)).toPromise();
-  // }
   registerNewUser(user: User) {
-    console.log("We are here 8");
-    console.log("user.username " + user.username);
-    console.log("user.password " + user.password);
     const headers = new HttpHeaders({ 'Access-Control-Allow-Origin': '*' }).set("content-type", "application/json");
     var body = {
       username: JSON.stringify(user.username),
