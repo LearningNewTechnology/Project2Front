@@ -1,10 +1,3 @@
-.table_cell{
-    border: 1px solid black;
-}
-.description_text{
-    resize: none;
-    background: rgba(163, 207, 233, 0.445);
-}
 .profile{
     border: 1px solid #ddd;
     border-radius: 4px;
