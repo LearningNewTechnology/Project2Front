@@ -4,7 +4,6 @@ import { User } from '../user';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { LocalStorageService } from '../services/local-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +22,7 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
 
   constructor(private usercredentialservice: UserCredentialService, private formBuilder: FormBuilder,
-    private router: Router, private route: ActivatedRoute, private localStorageServ: LocalStorageService) {
+    private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -50,6 +49,7 @@ export class LoginComponent implements OnInit {
     }
     this.usercredentialservice.login(this.user.username, this.user.password).pipe(first()).subscribe(
       data => {
+        console.log(data);
         if(data !== null && data.id > 0)
           {
             this.router.navigate(["home"]);

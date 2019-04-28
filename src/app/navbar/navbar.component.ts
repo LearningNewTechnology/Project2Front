@@ -25,11 +25,14 @@ export class NavbarComponent implements OnInit {
 
   viewUserInfo(){
     this.sessionService.deleteSearchResult();
-    this.router.navigate(["viewInfo"]);
+
+    if(this.router.url != "/viewInfo")
+      this.router.navigate(["viewInfo"]);
+    else
+      window.location.reload(true);
   }
 
-  searchByUsername(){
-    console.log(this.searchText.controls.userInput.value);
+  searchByUsername(){ 
     let temp = this.searchServ.searchByUsername(this.searchText.controls.userInput.value)
       .subscribe(
         data => {

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorageService } from '../services/local-storage.service';
+import { SocialPostService } from '../services/social-post.service';
+import { Post } from '../post';
+import { first, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +9,25 @@ import { LocalStorageService } from '../services/local-storage.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { 
+  newsFeedList: Post[];
+  constructor(private newsFeedServ: SocialPostService) { 
   }
-
+  refresh(){
+    window.location.reload(true);
+  }
+  addNewPost(){
+    
+  }
   ngOnInit() {
+    this.newsFeedServ.getNewFeeds().subscribe(
+      data => {
+        console.log(data);
+        this.newsFeedList =  data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 }
