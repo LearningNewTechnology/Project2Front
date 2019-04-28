@@ -7,6 +7,7 @@ import {EditUserComponent} from './edit-user/edit-user.component';
 import { AuthguardService } from './services/authguard.service';
 import { ViewInfoComponent } from './view-info/view-info.component';
 import { ViewSearchResultComponent } from './view-search-result/view-search-result.component';
+import { ResetComponent } from './reset/reset.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -16,7 +17,9 @@ const routes: Routes = [
   {path: 'viewSearchResult', component:ViewSearchResultComponent},
   {path: 'home', component:HomeComponent, canActivate: [AuthguardService]},
   {path: 'viewInfo', component:ViewInfoComponent},
+  {path: 'reset', component:ResetComponent},
   {path: '**', redirectTo: 'login'}
+  
 ];
 
 @NgModule({

@@ -1,0 +1,26 @@
+z<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h1>User Reset Password</h1>
+    </div>
+    <form [formGroup]="resetForm">
+      <div class="col-md-12 text-center form-group">
+        <input type="text" placeholder="Username" formControlName="username"
+          [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /> <br />
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+          <div *ngIf="f.username.errors.required">Username is required</div>
+        </div>
+      </div>
+      <div class="col-md-12 text-center form-group">
+        <input type="text" placeholder="Email" formControlName="email"
+          [ngClass]="{ 'is-invalid': submitted && f.email.errors }" /> <br />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Email is required</div>
+          <div *ngIf="f.email.errors.email">Incorrect Email Format</div>
+        </div>
+      </div>
+      
+      <button class="btn btn-md" id="reset_button" (click)="resetPass()">Reset</button>
+    </form>
+  </div>
+</div>

@@ -14,7 +14,9 @@ import { HomeComponent } from './home/home.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { EditUserComponent } from './edit-user/edit-user.component'
 import { ViewInfoComponent } from './view-info/view-info.component';
-import { ViewSearchResultComponent } from './view-search-result/view-search-result.component'
+import { ViewSearchResultComponent } from './view-search-result/view-search-result.component';
+import { ResetComponent } from './reset/reset.component';
+import { Route1Component } from './route1/route1.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ViewSearchResultComponent } from './view-search-result/view-search-resu
     HomeComponent,
     EditUserComponent,
     ViewInfoComponent,
-    ViewSearchResultComponent
+    ViewSearchResultComponent,
+    ResetComponent,
+    Route1Component
   ],
   imports: [
     BrowserModule,
