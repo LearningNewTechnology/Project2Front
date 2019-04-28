@@ -18,8 +18,8 @@ const routes: Routes = [
   {path: 'home', component:HomeComponent, canActivate: [AuthguardService]},
   {path: 'viewInfo', component:ViewInfoComponent},
   {path: 'reset', component:ResetComponent},
-  {path: '**', redirectTo: 'login'},
-
+  {path: '**', redirectTo: 'login'}
+  
 ];
 
 @NgModule({

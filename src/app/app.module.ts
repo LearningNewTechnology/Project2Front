@@ -15,7 +15,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { EditUserComponent } from './edit-user/edit-user.component'
 import { ViewInfoComponent } from './view-info/view-info.component';
 import { ViewSearchResultComponent } from './view-search-result/view-search-result.component';
-import { ResetComponent } from './reset/reset.component'
+import { ResetComponent } from './reset/reset.component';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ResetComponent } from './reset/reset.component'
     EditUserComponent,
     ViewInfoComponent,
     ViewSearchResultComponent,
-    ResetComponent
+    ResetComponent,
+
   ],
   imports: [
     BrowserModule,
