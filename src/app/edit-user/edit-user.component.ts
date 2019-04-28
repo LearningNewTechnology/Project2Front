@@ -30,7 +30,8 @@ export class EditUserComponent implements OnInit {
       email: [''],
       firstName: [''],
       lastName: [''],
-      profilePic :['']
+      profilePic :[''],
+      password: ['']
     });
     
 
@@ -63,6 +64,9 @@ export class EditUserComponent implements OnInit {
 
     if (this.editForm.value["lastName"] != ""){
       formData.append('lastName', this.editForm.get('lastName').value);
+    }
+    if (this.editForm.value["password"] != ""){
+      formData.append('password', this.editForm.get('password').value);
     }
 
     if (this.editForm.value["profilePic"] != ""){

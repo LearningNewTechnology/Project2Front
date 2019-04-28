@@ -20,6 +20,12 @@
 
 <form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="pt-100" enctype="multipart/form-data" >
   <div class="row justify-content-center">
+      <div class="form-group col-4">
+        <label class="font-weight-bolder">Profile Picture</label>
+        <input type="file" formControlName="profilePic" class="form-control" (change)="fileSelected($event)" >
+      </div>
+    </div>
+  <div class="row justify-content-center">
     <div class="form-group col-4">
       <label class="font-weight-bolder">Username</label>
       <input type="text" formControlName="username" class="form-control" [value]="data.username">
@@ -44,11 +50,12 @@
     </div>
   </div>
   <div class="row justify-content-center">
-    <div class="form-group col-4">
-      <label class="font-weight-bolder">Profile Picture</label>
-      <input type="file" formControlName="profilePic" class="form-control" (change)="fileSelected($event)" >
+      <div class="form-group col-4">
+        <label class="font-weight-bolder">Password</label>
+        <input type="text" formControlName="password" class="form-control" required>
+      </div>
     </div>
-  </div>
+
   <div class="row justify-content-center">
     <div class="form-group col-4">
       <button type="submit" class="btn btn-success btn-block">Update</button>
