@@ -1,6 +1,31 @@
-<p>
-  home works!
-</p>
-
 <a class=" btn btn-primary" routerLink="/editUser" >Update Profile</a>
+
+
+
+<div class="col-md-2 text-center"></div>
+<div class="col-md-8 text-center">
+  <form enctype="multipart/form-data" [formGroup]="newPost">
+    <input type="text" formControlName="description"/>
+    <input type="file" formControlName="picture"/>
+  </form>
+
+  <table class="text-center">
+    <tr *ngFor="let post of newsFeedList">
+      <td class="table_cell">
+        <label>
+          <h5>{{firstName}} {{lastName}}</h5>
+        </label> <br />
+        Posted on {{post.postedDate}} <br />
+        <img *ngIf="post.picture != null" [src]="post.picture" width="600px"><br />
+        <textarea rows="3" cols="100" disabled=true class="description_text">
+          {{post.description}}
+        </textarea>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="col-md-2 text-center"></div>
+<div>
+  <button (click)="refresh()">return to top</button>
+</div>
 

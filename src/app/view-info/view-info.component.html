@@ -29,19 +29,18 @@
 
 <div style="text-align:center;">
   <label><h2>Name: {{user.firstName}} {{user.lastName}}</h2></label><br/>
-  <label><h2>Email: {{user.email}}</h2></label><input type="text" disabled=true name="userEmail" value={{user.email}}> <br/>
+  <label><h2>Email: {{user.email}}</h2></label><br/>
   <table>
     <tr *ngFor="let post of user.postList">
       <div class="card">
-          <div class="card-header">
-            {{user.username}} <br/>
+          <div class="card-header">           
             <div *ngIf="user.profilePic != null; else elseBlock">
               <img class="img-thumbnail img-fluid profile" src="{{user.profilePic}}">
             </div>
             <ng-template #elseBlock>
               <img class="img-thumbnail img-fluid profile" src="assets/defaultPic.png" >
-            </ng-template>
-            
+            </ng-template> <br/>
+            <h5>{{user.username}}</h5>
             
           </div>
           <div class="card-body">
