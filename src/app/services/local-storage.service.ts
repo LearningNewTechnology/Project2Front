@@ -20,6 +20,6 @@ export class LocalStorageService {
     return localStorage.getItem('User') !== null && localStorage.getItem('User') != undefined;
   }
   getUser() {
-    return localStorage.getItem('User');
+    return (localStorage.getItem('User'));
   }
 }

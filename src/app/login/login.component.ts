@@ -53,10 +53,9 @@ export class LoginComponent implements OnInit {
     }
     this.usercredentialservice.login(this.user.username, this.user.password).pipe(first()).subscribe(
       data => {
-        console.log("0:  " + data);
+        console.log("2:  " + data);
         if(data !== null && data.id > 0)
           {
-            console.log("1:  " + this.localStorageServ.getUser());
             this.router.navigate(["home"]);
           }
         else console.log("No user");
