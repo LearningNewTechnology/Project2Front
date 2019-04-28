@@ -49,11 +49,10 @@ export class LoginComponent implements OnInit {
     }
     this.usercredentialservice.login(this.user.username, this.user.password).pipe(first()).subscribe(
       data => {
-        console.log(data);
         if(data !== null && data.id > 0)
-          {
+        {
             this.router.navigate(["home"]);
-          }
+        }
         else console.log("No user");
       },
       error => {

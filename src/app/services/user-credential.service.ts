@@ -37,7 +37,6 @@ export class UserCredentialService {
       if (user1 !==null && user1 !== undefined){
         if(user1.id > 0)
         this.localStorage.saveUser(user1);
-        console.log(this.localStorage.saveUser(user1))
         this.currentUserObject.next(user1);
       }
       return user1;

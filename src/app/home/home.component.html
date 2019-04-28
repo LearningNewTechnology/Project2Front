@@ -1,7 +1,14 @@
 <a class=" btn btn-primary" routerLink="/editUser" >Update Profile</a>
 
+
+
 <div class="col-md-2 text-center"></div>
 <div class="col-md-8 text-center">
+  <form enctype="multipart/form-data" [formGroup]="newPost">
+    <input type="text" formControlName="description"/>
+    <input type="file" formControlName="picture"/>
+  </form>
+
   <table class="text-center">
     <tr *ngFor="let post of newsFeedList">
       <td class="table_cell">

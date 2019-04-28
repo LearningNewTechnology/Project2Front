@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SocialPostService } from '../services/social-post.service';
 import { Post } from '../post';
 import { first, map } from 'rxjs/operators';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,8 @@ import { first, map } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
   newsFeedList: Post[];
-  constructor(private newsFeedServ: SocialPostService) { 
+  newPost: FormGroup;
+  constructor(private newsFeedServ: SocialPostService, private formBuilder: FormBuilder) { 
   }
   refresh(){
     window.location.reload(true);
@@ -19,9 +21,13 @@ export class HomeComponent implements OnInit {
     
   }
   ngOnInit() {
+    this.newPost = this.formBuilder.group({
+      description: [''],
+      picture: ['']
+    });
+
     this.newsFeedServ.getNewFeeds().subscribe(
       data => {
-        console.log(data);
         this.newsFeedList =  data;
       },
       error => {

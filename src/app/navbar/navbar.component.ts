@@ -31,7 +31,21 @@ export class NavbarComponent implements OnInit {
     else
       window.location.reload(true);
   }
-
+  goHome(){
+    if(this.sessionService.getUser() != null){
+      if(this.router.url == "/home")
+      {
+        window.location.reload(true);
+      }
+      else {
+        this.router.navigate(["home"]);
+      }
+    }else{
+      if(this.router.url != "/login"){
+        this.router.navigate(["login"]);
+      } else window.location.reload(true);
+    }
+  }
   searchByUsername(){ 
     let temp = this.searchServ.searchByUsername(this.searchText.controls.userInput.value)
       .subscribe(
