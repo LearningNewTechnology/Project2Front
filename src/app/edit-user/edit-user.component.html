@@ -1,9 +1,24 @@
 <h1>You are viewing the Update Profile Page!!</h1>
 <h2>HELLO</h2>
 
-<form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="pt-100" enctype="multipart/form-data">
+<div class="row justify-content-center">
+  <div class="form-group col-4">
+<div *ngIf="data.profilePic != null; else elseBlock">
+  <img id="profilePic" class="img-thumbnail img-fluid profile" src="{{data.profilePic}}">
+</div>
+<ng-template #elseBlock>
+  <img id="profilePic" class="img-thumbnail img-fluid profile" src="assets/defaultPic.png"  >
+</ng-template>
+<!-- <form [formGroup]="editForm" enctype="multipart/form-data" >
+  <input type="file" formControlName="profilePic">
+  <input type="submit" class="btn btn-success btn-block">
+</form> -->
+</div>
+</div>
 
 
+
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="pt-100" enctype="multipart/form-data" >
   <div class="row justify-content-center">
     <div class="form-group col-4">
       <label class="font-weight-bolder">Username</label>
@@ -26,6 +41,12 @@
     <div class="form-group col-4">
       <label class="font-weight-bolder">Last Name</label>
       <input type="text" formControlName="lastName" class="form-control" [value]="data.lastName" required>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="form-group col-4">
+      <label class="font-weight-bolder">Profile Picture</label>
+      <input type="file" formControlName="profilePic" class="form-control" (change)="fileSelected($event)" >
     </div>
   </div>
   <div class="row justify-content-center">

@@ -12,13 +12,15 @@ import { UserCredentialService } from '../services/user-credential.service';
 })
 export class EditUserComponent implements OnInit {
   editForm : FormGroup;
-  user = new User();
+  user : User;
   public data: any;
+  selectedFile: File = null;
 
   constructor(private _editService: UserCredentialService, private localStorageServ: LocalStorageService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.data = JSON.parse(this.localStorageServ.getUser());
+    
     console.log(this.data);
     console.log(this.data.id);
     
@@ -27,7 +29,8 @@ export class EditUserComponent implements OnInit {
       username: [''],
       email: [''],
       firstName: [''],
-      lastName: ['']
+      lastName: [''],
+      profilePic :['']
     });
     
 
@@ -61,11 +64,34 @@ export class EditUserComponent implements OnInit {
     if (this.editForm.value["lastName"] != ""){
       formData.append('lastName', this.editForm.get('lastName').value);
     }
+
+    if (this.editForm.value["profilePic"] != ""){
+      formData.append('file', this.selectedFile, this.selectedFile.name);
+    }
     
     formData.append('id', this.data.id);
     console.log( "console logging" + formData);
+
+
     this._editService.editUser(formData)
     .subscribe((response) => {console.log(response)}, (error) => {console.log(error)});
 
+    this._editService.editUser(formData).subscribe(
+      data => {
+        if(data !== null)
+          {
+            this.router.navigate(["home"]);
+          }
+        else console.log("No user");
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
+
+  fileSelected(event) {
+    this.selectedFile =<File> event.target.files[0];
+  }
+
 }

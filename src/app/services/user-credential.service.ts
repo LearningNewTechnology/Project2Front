@@ -72,9 +72,14 @@ export class UserCredentialService {
     // };
     console.log("body "+ editUserBody);
     console.log(headers)
-    let temp = this.httpServ.post<any>(this.editUrl, editUserBody, { headers });
-    console.log(temp.pipe(map(res => res as String)));
-    return temp;
-
+    return this.httpServ.post<any>(this.editUrl, editUserBody, { headers }).pipe(map(user1 =>{
+      if (user1 !==null && user1 !== undefined){
+        if(user1.id > 0)
+        this.localStorage.saveUser(user1);
+        console.log(this.localStorage.saveUser(user1))
+        this.currentUserObject.next(user1);
+      }
+      return user1;
+    }))
   }
 }
