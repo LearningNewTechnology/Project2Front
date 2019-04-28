@@ -9,8 +9,8 @@ import { Post } from '../post';
   styleUrls: ['./view-info.component.css']
 })
 export class ViewInfoComponent implements OnInit {
-  index: number;
   user: User;
+  index: number;
   // firstName: string;
   // lastName: string;
   // email: string;
@@ -31,7 +31,6 @@ export class ViewInfoComponent implements OnInit {
     }
     else {
       let user = JSON.parse(this.localStorageServ.getUser());
-
       this.user = user;
       // this.firstName = user.firstName;
       // this.lastName = user.lastName;

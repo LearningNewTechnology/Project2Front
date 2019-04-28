@@ -12,10 +12,10 @@
           <a class="nav-link" href="home">Home</a>
         </li>
         <li>
-          <a class="nav-link" *ngIf="checkForUser()" (click)="logout()">Logout</a>
+          <a class="nav-link" style="cursor: pointer;" *ngIf="checkForUser()" (click)="logout()">Logout</a>
         </li>
         <li>
-          <a class="nav-link" *ngIf="checkForUser()" (click)="viewUserInfo()">View Profile</a>
+          <a class="nav-link" style="cursor: pointer;" *ngIf="checkForUser()" (click)="viewUserInfo()">View Profile</a>
         </li>
       </ul>
 
