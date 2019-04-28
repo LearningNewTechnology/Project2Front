@@ -42,18 +42,18 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(){
-    console.log("We are here 1");
     this.submitted = true;
     this.user.username = this.f.username.value;
-    console.log("we are here 2");
     this.user.password = this.f.password.value;
-    console.log("we are here 3");
     if(this.loginForm.invalid){
       return;
     }
     this.usercredentialservice.login(this.user.username, this.user.password).pipe(first()).subscribe(
       data => {
+<<<<<<< HEAD
         console.log("2:  " + data);
+=======
+>>>>>>> ef9fd74d51cddf404546ca8c1cec4985f254937e
         if(data !== null && data.id > 0)
           {
             this.router.navigate(["home"]);

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../user';
+import { LocalStorageService } from '../services/local-storage.service';
+import { Post } from '../post';
 
 @Component({
   selector: 'app-view-info',
@@ -6,12 +9,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-info.component.css']
 })
 export class ViewInfoComponent implements OnInit {
-  firstName: string = 'Doan';
-  lastName: string = 'Ha';
-  email: string = 'dh@mail.com';
-  constructor() { }
+  index: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  postList: Post[];
+  constructor(private localStorageServ: LocalStorageService) { }
 
   ngOnInit() {
+    if(this.localStorageServ.getSearchResult() != null){
+      let searchResultList = JSON.parse(this.localStorageServ.getSearchResult());
+      this.index = +(sessionStorage.getItem('searchUserId')) - 1;
+      let userToBeViewed = searchResultList[this.index];
+
+      this.firstName = userToBeViewed.firstName;
+      this.lastName = userToBeViewed.lastName;
+      this.email = userToBeViewed.email;
+      this.postList = userToBeViewed.postList;
+    }
+    else {
+      let user = JSON.parse(this.localStorageServ.getUser());
+
+      this.firstName = user.firstName;
+      this.lastName = user.lastName;
+      this.email = user.email;
+      this.postList = user.postList;
+    }
+
   }
 
 }
