@@ -37,7 +37,6 @@ export class UserCredentialService {
       if (user1 !==null && user1 !== undefined){
         if(user1.id > 0)
         this.localStorage.saveUser(user1);
-        console.log(this.localStorage.saveUser(user1))
         this.currentUserObject.next(user1);
       }
       return user1;
@@ -47,11 +46,11 @@ export class UserCredentialService {
   registerNewUser(user: User) {
     const headers = new HttpHeaders({ 'Access-Control-Allow-Origin': '*' }).set("content-type", "application/json");
     var body = {
-      username: JSON.stringify(user.username),
-      password: JSON.stringify(user.password),
-      firstName: JSON.stringify(user.firstName),
-      lastName: JSON.stringify(user.lastName),
-      email: JSON.stringify(user.email)
+      username: user.username,
+      password: user.password,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email
     };
     console.log(body);
     let temp = this.httpServ.post<string>(this.registerUrl, body, { headers });

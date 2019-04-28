@@ -22,13 +22,14 @@ export class RegisterComponent implements OnInit {
       if(this.registerForm.invalid){
         return;
       }
+      
       this.registerServ.registerNewUser(this.registerForm.value).pipe(first()).subscribe(
         data => {
           this.message = 'success';
-          console.log(data);
+          console.log("10  ",data);
         },
         error =>{
-          console.log("1:  " + error);
+          console.log("error 10:  " + error);
         }
       )
   }
