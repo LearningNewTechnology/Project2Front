@@ -28,8 +28,7 @@ export class RegisterComponent implements OnInit {
       temp.password = ""+this.f.password.value;
       temp.lastName = ""+this.f.lastName.value;
       temp.email = ""+this.f.email.value;
-      console.log(temp.firstName + " " + temp.lastName + " " + temp.username + " " + temp.password + " " + temp.email);
-      this.registerServ.registerNewUser(temp).pipe(first()).subscribe(
+      this.registerServ.registerNewUser(this.registerForm.value).pipe(first()).subscribe(
         data => {
           this.message = 'success';
           console.log("10  ",data);
