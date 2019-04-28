@@ -5,3 +5,18 @@
     resize: none;
     background: rgba(163, 207, 233, 0.445);
 }
+.profile{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 100px;
+    margin-top: 10px;
+}
+table{
+    text-align:center;
+    margin-left:auto; 
+    margin-right:auto;
+}
+.card{
+    margin-bottom: 15px;
+}

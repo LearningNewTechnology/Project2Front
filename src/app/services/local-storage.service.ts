@@ -21,7 +21,7 @@ export class LocalStorageService {
     return localStorage.getItem('User') !== null && localStorage.getItem('User') != undefined;
   }
   getUser() {
-    return localStorage.getItem('User');
+    return (localStorage.getItem('User'));
   }
   saveSearchResult(searchResult: User[]){
     localStorage.setItem('searchResult', JSON.stringify(searchResult));

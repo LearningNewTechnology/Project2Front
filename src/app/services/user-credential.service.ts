@@ -12,6 +12,7 @@ import { Executor } from 'selenium-webdriver';
 export class UserCredentialService {
   loginUrl: string = 'http://localhost:8080/Project2/login.do';
   registerUrl: string = 'http://localhost:8080/Project2/register.do';
+  editUrl: string = 'http://localhost:8080/Project2/updateUser.do';
   private currentUserObject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
   
@@ -52,9 +53,28 @@ export class UserCredentialService {
       lastName: JSON.stringify(user.lastName),
       email: JSON.stringify(user.email)
     };
-    var body2 = user;
-    let temp = this.httpServ.post<string>(this.registerUrl, body2, { headers });
+    console.log(body);
+    let temp = this.httpServ.post<string>(this.registerUrl, body, { headers });
     console.log(temp.pipe(map(res => res as String)));
     return temp;
+  }
+
+  editUser(editUserBody){
+    console.log("in editUser() user " + editUserBody)
+    const headers = new HttpHeaders({ 'Access-Control-Allow-Origin': '*' });
+    // var body = {
+    //   username: JSON.stringify(user.username),
+    //   firstName: JSON.stringify(user.firstName),
+    //   lastName: JSON.stringify(user.lastName),
+    //   email: JSON.stringify(user.email),
+    //   password: JSON.stringify(user.password),
+    //   id: user.id
+    // };
+    console.log("body "+ editUserBody);
+    console.log(headers)
+    let temp = this.httpServ.post<any>(this.editUrl, editUserBody, { headers });
+    console.log(temp.pipe(map(res => res as String)));
+    return temp;
+
   }
 }

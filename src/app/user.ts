@@ -8,4 +8,5 @@ export class User{
     firstName: string;
     lastName: string;
     postList: Post[];
+    profilePic: string;
 }

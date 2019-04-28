@@ -9,11 +9,12 @@ import { Post } from '../post';
   styleUrls: ['./view-info.component.css']
 })
 export class ViewInfoComponent implements OnInit {
+  user: User;
   index: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  postList: Post[];
+  // firstName: string;
+  // lastName: string;
+  // email: string;
+  // postList: Post[];
   constructor(private localStorageServ: LocalStorageService) { }
 
   ngOnInit() {
@@ -22,18 +23,19 @@ export class ViewInfoComponent implements OnInit {
       this.index = +(sessionStorage.getItem('searchUserId')) - 1;
       let userToBeViewed = searchResultList[this.index];
 
-      this.firstName = userToBeViewed.firstName;
-      this.lastName = userToBeViewed.lastName;
-      this.email = userToBeViewed.email;
-      this.postList = userToBeViewed.postList;
+      this.user = userToBeViewed;
+      // this.firstName = userToBeViewed.firstName;
+      // this.lastName = userToBeViewed.lastName;
+      // this.email = userToBeViewed.email;
+      // this.postList = userToBeViewed.postList;
     }
     else {
       let user = JSON.parse(this.localStorageServ.getUser());
-
-      this.firstName = user.firstName;
-      this.lastName = user.lastName;
-      this.email = user.email;
-      this.postList = user.postList;
+      this.user = user;
+      // this.firstName = user.firstName;
+      // this.lastName = user.lastName;
+      // this.email = user.email;
+      // this.postList = user.postList;
     }
 
   }

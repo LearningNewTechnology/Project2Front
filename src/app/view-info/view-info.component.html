@@ -1,32 +1,28 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <label>
-        <h2>Name: {{firstName}} {{lastName}}</h2>
-      </label>
-    </div><br />
-    <div class="col-md-12 text-center">
-      <label>
-        <h2>Email: {{email}}</h2>
-      </label>
-    </div><br />
-    <div class="col-md-2 text-center"></div>
-    <div class="col-md-8 text-center">
-      <table class="text-center">
-        <tr *ngFor="let post of postList">
-          <td class="table_cell">
-            <label>
-              <h5>{{firstName}} {{lastName}}</h5>
-            </label> <br />
-            Posted on {{post.postedDate}} <br />
-            <img *ngIf="post.picture != null" [src]="post.picture" width="600px"><br />
-            <textarea rows="3" cols="100" disabled=true class="description_text">
-              {{post.description}}
-            </textarea>
-          </td>
-        </tr>
-      </table>
-    </div>
-    <div class="col-md-2 text-center"></div>
-  </div>
-</div>
+<div style="text-align:center;">
+  <label><h2>First Name: </h2></label> <input type="text" disabled=true name="userFirstName" value={{user.firstName}}> <br/>
+  <label><h2>Last Name: </h2></label> <input type="text" disabled=true name="userLastName" value={{user.lastName}}> <br/>
+  <label><h2>Email: </h2></label>   <input type="text" disabled=true name="userEmail" value={{user.email}}> <br/>
+  <table>
+    <tr *ngFor="let post of user.postList">
+      <div class="card">
+          <div class="card-header">
+            {{user.username}} <br/>
+            <div *ngIf="user.profilePic != null; else elseBlock">
+              <img class="img-thumbnail img-fluid profile" src="{{user.profilePic}}">
+            </div>
+            <ng-template #elseBlock>
+              <img class="img-thumbnail img-fluid profile" src="assets/defaultPic.png" >
+            </ng-template>
+            
+            
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{post.description}}</h5>
+            <p class="card-text">{{post.postedDate}}</p>
+            <img class="img-fluid" *ngIf="post.picture != null" [src]="post.picture" width="600px">
+            <p class="card-text">Likes: {{post.likedBy.length}}</p>
+          </div>
+        </div>
+    </tr>
+  </table>
+</div> -->

@@ -6,5 +6,5 @@ export class Post{
     postedDate: string;
     authorId: number;
     picture: string;
-    like: Like[];
+    likedBy: Like[];
 }
