@@ -50,10 +50,6 @@ export class LoginComponent implements OnInit {
     }
     this.usercredentialservice.login(this.user.username, this.user.password).pipe(first()).subscribe(
       data => {
-<<<<<<< HEAD
-        console.log("2:  " + data);
-=======
->>>>>>> ef9fd74d51cddf404546ca8c1cec4985f254937e
         if(data !== null && data.id > 0)
           {
             this.router.navigate(["home"]);

@@ -46,27 +46,19 @@ export class EditUserComponent implements OnInit {
     // console.log("editUser = " + JSON.stringify(editUser));
     // console.log(editUser)
     const formData = new FormData();
-    if (this.editForm.value["username"] == ""){
-      formData.append('username', null)
-    }else{
+    if (this.editForm.value["username"] != ""){
       formData.append('username', this.editForm.get('username').value);
     }
 
-    if (this.editForm.value["email"] == ""){
-      formData.append('email', null)
-    }else{
+    if (this.editForm.value["email"] != ""){
       formData.append('email', this.editForm.get('email').value);
     }
 
-    if (this.editForm.value["firstName"] == ""){
-      formData.append('firstName', null)
-    }else{
+    if (this.editForm.value["firstName"] != ""){
       formData.append('firstName', this.editForm.get('firstName').value);
     }
 
-    if (this.editForm.value["lastName"] == ""){
-      formData.append('lastName', null)
-    }else{
+    if (this.editForm.value["lastName"] != ""){
       formData.append('lastName', this.editForm.get('lastName').value);
     }
     
