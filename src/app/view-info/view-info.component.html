@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 <!-- <div>
   <label><h2>First Name: </h2></label> <input type="text" disabled=true name="userFirstName" value={{firstName}}> <br/>
   <label><h2>Last Name: </h2></label> <input type="text" disabled=true name="userLastName" value={{lastName}}> <br/>
   <label><h2>Email: </h2></label>   <input type="text" disabled=true name="userEmail" value={{email}}> <br/>
-=======
-<div style="text-align:center;">
-  <label><h2>First Name: </h2></label> <input type="text" disabled=true name="userFirstName" value={{user.firstName}}> <br/>
-  <label><h2>Last Name: </h2></label> <input type="text" disabled=true name="userLastName" value={{user.lastName}}> <br/>
-  <label><h2>Email: </h2></label>   <input type="text" disabled=true name="userEmail" value={{user.email}}> <br/>
->>>>>>> 6c42f35167457b882b6d6e1848f1eb42fbd078cb
   <table>
     <tr *ngFor="let post of user.postList">
       <div class="card">
@@ -36,19 +29,18 @@
 
 <div style="text-align:center;">
   <label><h2>Name: {{user.firstName}} {{user.lastName}}</h2></label><br/>
-  <label><h2>Email: {{user.email}}</h2></label><input type="text" disabled=true name="userEmail" value={{user.email}}> <br/>
+  <label><h2>Email: {{user.email}}</h2></label><br/>
   <table>
     <tr *ngFor="let post of user.postList">
       <div class="card">
-          <div class="card-header">
-            {{user.username}} <br/>
+          <div class="card-header">           
             <div *ngIf="user.profilePic != null; else elseBlock">
               <img class="img-thumbnail img-fluid profile" src="{{user.profilePic}}">
             </div>
             <ng-template #elseBlock>
               <img class="img-thumbnail img-fluid profile" src="assets/defaultPic.png" >
-            </ng-template>
-            
+            </ng-template> <br/>
+            <h5>{{user.username}}</h5>
             
           </div>
           <div class="card-body">

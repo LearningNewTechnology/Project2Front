@@ -1,6 +1,6 @@
 <table>
   <tr *ngFor="let user of searchResult; index as i">
-      <div class="form-group col-md-offset-3 col-md-12 text-left">
+      <!-- <div class="form-group col-md-offset-3 col-md-12 text-left">
         <label for="username">Username: {{user.username}}</label>
       </div>
       <div class="form-group col-md-offset-3 col-md-12 text-left">
@@ -11,6 +11,29 @@
       </div>
       <div class="form-group">
         <button class="btn btn-primary btn-md" (click)="showDetail()" id="view-detail" value={{i+1}}>Show More Detail</button><br />
+      </div> -->
+
+      <div class="card">
+        <div class="card-header">           
+          <div *ngIf="user.profilePic != null; else elseBlock">
+            <img class="img-thumbnail img-fluid profile" src="{{user.profilePic}}">
+          </div>
+          <ng-template #elseBlock>
+            <img class="img-thumbnail img-fluid profile" src="assets/defaultPic.png" >
+          </ng-template> <br/>
+          <div class="form-group col-md-offset-3 col-md-12 text-left">
+            <label for="username">Username: {{user.username}}</label>
+          </div>
+          <div class="form-group col-md-offset-3 col-md-12 text-left">
+            <label for="name">Name: {{user.firstName}} {{user.lastName}}</label>
+          </div>
+          <div class="form-group col-md-offset-3 col-md-12 text-left">
+            <label for="email">Email: {{user.email}}</label>
+          </div> 
+          <div class="form-group">
+            <button class="btn btn-primary btn-md" (click)="showDetail()" id="view-detail" value={{i+1}}>Show More Detail</button><br />
+          </div>         
+        </div>
       </div>
   </tr>
 </table>
