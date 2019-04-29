@@ -88,8 +88,8 @@ export class HomeComponent implements OnInit {
     this.selectedFile =<File> event.target.files[0];
   }
   onLike(){
-    console.log(this.likeForm.value);
-    this.newsFeedServ.likeAPost(this.likeForm.value)
+    console.log(this.likeForm.controls.postId.value);
+//    this.newsFeedServ.likeAPost(this.likeForm.value)
   }
 
 }
