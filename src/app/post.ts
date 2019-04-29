@@ -2,7 +2,7 @@ import { Like } from './like';
 import { User } from './user';
 
 export class Post{
-    id: number;
+    pid: number;
     description: string;
     postedDate: string;
     author: User;

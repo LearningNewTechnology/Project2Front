@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   postForm: FormGroup;
+  likeForm: FormGroup;
   newsFeedList: Post[];
   newPost: FormGroup;
   selectedFile: File = null;
@@ -50,6 +51,13 @@ export class HomeComponent implements OnInit {
       postPic :[''],
       userId: [this.data.id]
     });
+
+    this.likeForm = this.formBuilder.group({
+      postId: [''],
+      userId: [this.data.id]
+    })
+
+
   }
   onSubmit() {
     
@@ -71,12 +79,17 @@ export class HomeComponent implements OnInit {
 
       },
       error =>{
+        alert("Sorry. There was an error creating your post.")
         console.log(error);
       }
     )
   }
   fileSelected(event) {
     this.selectedFile =<File> event.target.files[0];
+  }
+  onLike(){
+    console.log(this.likeForm.value);
+    this.newsFeedServ.likeAPost(this.likeForm.value)
   }
 
 }

@@ -17,4 +17,16 @@ export class SocialPostService {
     const headers = new HttpHeaders({ 'Access-Control-Allow-Origin': '*' });
     return this.httpServ.post<any>('http://localhost:8080/Project2/addPost.do', formData, {headers});
   }
+  likeAPost(likeForm){
+    const headers = new HttpHeaders({ 'Access-Control-Allow-Origin': '*' }).set("content-type", "application/json");
+    var body = {
+      id: likeForm.postId,
+      userId: likeForm.userId,
+    };
+    console.log(body);
+    let temp = this.httpServ.post<string>('http://localhost:8080/Project2/like.do', body, { headers });
+    
+    return temp;
+
+  }
 }
