@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
       
       this.registerServ.registerNewUser(this.registerForm.value).pipe(first()).subscribe(
         data => {
+          alert("Congrats on registering an account! Please log in with new account.")
           this.message = 'success';
           console.log("10  ",data);
         },

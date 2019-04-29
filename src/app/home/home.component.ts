@@ -3,6 +3,9 @@ import { SocialPostService } from '../services/social-post.service';
 import { Post } from '../post';
 import { first, map } from 'rxjs/operators';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UserCredentialService } from '../services/user-credential.service';
+import { LocalStorageService } from '../services/local-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +13,12 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  postForm: FormGroup;
   newsFeedList: Post[];
   newPost: FormGroup;
-  constructor(private newsFeedServ: SocialPostService, private formBuilder: FormBuilder) { 
+  selectedFile: File = null;
+  public data: any;
+  constructor(private newsFeedServ: SocialPostService, private formBuilder: FormBuilder, private _postService: UserCredentialService, private _localStorageServ: LocalStorageService, private router: Router) { 
   }
   refresh(){
     window.location.reload(true);
@@ -34,6 +40,43 @@ export class HomeComponent implements OnInit {
         console.log(error);
       }
     );
+
+    this.data = JSON.parse(this._localStorageServ.getUser());
+    console.log(this.data);
+    console.log(this.data.id);
+
+    this.postForm = this.formBuilder.group({
+      description: [''],
+      postPic :[''],
+      userId: [this.data.id]
+    });
+  }
+  onSubmit() {
+    
+    console.log(this.postForm.value)
+
+    const formData = new FormData();
+    formData.append('userId', this.postForm.get('userId').value);
+    if (this.postForm.value["description"] != ""){
+      formData.append('description', this.postForm.get('description').value);
+    }
+    if (this.postForm.value["postPic"] != ""){
+      formData.append('file', this.selectedFile, this.selectedFile.name);
+    }
+    console.log(formData);
+
+    this.newsFeedServ.addNewPost(formData).pipe(first()).subscribe(
+      data => {
+        alert("You just created a post!");
+
+      },
+      error =>{
+        console.log(error);
+      }
+    )
+  }
+  fileSelected(event) {
+    this.selectedFile =<File> event.target.files[0];
   }
 
 }

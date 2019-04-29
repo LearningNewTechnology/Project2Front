@@ -8,6 +8,7 @@ import { AuthguardService } from './services/authguard.service';
 import { ViewInfoComponent } from './view-info/view-info.component';
 import { ViewSearchResultComponent } from './view-search-result/view-search-result.component';
 import { ResetComponent } from './reset/reset.component';
+import { PostComponent } from './post/post.component'
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'home', component:HomeComponent, canActivate: [AuthguardService]},
   {path: 'viewInfo', component:ViewInfoComponent},
   {path: 'reset', component:ResetComponent},
+  {path: 'post', component:PostComponent},
   {path: '**', redirectTo: 'login'}
   
 ];

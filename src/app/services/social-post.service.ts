@@ -13,8 +13,8 @@ export class SocialPostService {
 
     return this.httpServ.get<Post[]>('http://localhost:8080/Project2/getPosts.do', {headers});
   }
-  addNewPost(userInput){
-    const headers = new HttpHeaders({ 'Access-Control-Allow-Origin': '*' }).set('content-type', 'multipart/form-data');
-    this.httpServ.post<any>('http://localhost:8080/Project2/addPost.do', userInput, {headers});
+  addNewPost(formData){
+    const headers = new HttpHeaders({ 'Access-Control-Allow-Origin': '*' });
+    return this.httpServ.post<any>('http://localhost:8080/Project2/addPost.do', formData, {headers});
   }
 }

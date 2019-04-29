@@ -1,13 +1,36 @@
-<a class=" btn btn-primary" routerLink="/editUser" >Update Profile</a>
+<!-- Large modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Create a Post</button>
 
-
-
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <form [formGroup]="postForm" (ngSubmit)="onSubmit()" class="pt-100"  enctype="multipart/form-data">
+        <div class="row justify-content-center">
+            <div class="form-group col-4">
+              <label class="font-weight-bolder"></label>
+              <textarea type="text" formControlName="description" class="form-control" placeholder="Type a post here"></textarea>
+            </div>
+          </div>
+        <div class="row justify-content-center">
+            <div class="form-group col-4">
+              <label class="font-weight-bolder">Attach Image (Optional)</label>
+              <input type="file" formControlName="postPic" class="form-control" (change)="fileSelected($event)" >
+            </div>
+          </div>
+          <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Submit Post</button>
+            </div>
+      </form>
+    </div>
+  </div>
+</div>
 <div class="col-md-2 text-center"></div>
 <div class="col-md-8 text-center">
-  <form enctype="multipart/form-data" [formGroup]="newPost">
+
+  <!-- <form enctype="multipart/form-data" [formGroup]="newPost">
     <input type="text" formControlName="description"/>
     <input type="file" formControlName="picture"/>
-  </form>
+  </form> -->
 
   <table class="text-center">
     <tr *ngFor="let post of newsFeedList">
