@@ -24,9 +24,7 @@ export class HomeComponent implements OnInit {
   refresh(){
     window.location.reload(true);
   }
-  addNewPost(){
-    
-  }
+
   ngOnInit() {
     this.newPost = this.formBuilder.group({
       description: [''],
@@ -75,6 +73,8 @@ export class HomeComponent implements OnInit {
 
     this.newsFeedServ.addNewPost(formData).pipe(first()).subscribe(
       data => {
+        console.log("haha: " + data);
+        this._localStorageServ.saveUser(data);
         alert("You just created a post!");
 
       },

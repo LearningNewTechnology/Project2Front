@@ -9,6 +9,7 @@ export class LocalStorageService {
 
   constructor(private httpServ: HttpClient) { }
   saveUser(userInfo: User){
+    console.log(userInfo);
     localStorage.setItem('User', JSON.stringify(userInfo));
   }
   logout(){

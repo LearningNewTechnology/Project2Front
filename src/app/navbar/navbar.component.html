@@ -11,9 +11,13 @@
         <li class="nav-item active">
           <a style="cursor: pointer;" class="nav-link" (click)="goHome()">Home</a>
         </li>
-        
+
         <li>
           <a class="nav-link" style="cursor: pointer;" *ngIf="checkForUser()" (click)="viewUserInfo()">View Profile</a>
+        </li>
+        <li>
+          <a class="nav-link" routerLink="/editUser" *ngIf="checkForUser()" style="margin-bottom: 15px;">Update
+            Profile</a>
         </li>
         <li>
           <a class="nav-link" style="cursor: pointer;" *ngIf="checkForUser()" (click)="logout()">Logout</a>
