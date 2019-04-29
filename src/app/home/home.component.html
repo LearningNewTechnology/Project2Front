@@ -17,7 +17,8 @@
               <input type="file" formControlName="postPic" class="form-control" (change)="fileSelected($event)" >
             </div>
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer row justify-content-center">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="submit" class="btn btn-primary">Submit Post</button>
             </div>
       </form>
@@ -60,6 +61,11 @@
               <p class="card-text">{{post.postedDate}}</p>
               <img class="img-fluid postimage" *ngIf="post.picture != null" [src]="post.picture" width="600px">
               <p class="card-text" style="margin-top: 10px;">Likes: {{post.likedBy.length}}</p>
+              <form [formGroup]="likeForm" (ngSubmit)="onLike()">
+                <input type="text"  formControlName="postId" [(value)]=post.pid>
+                <button type="submit" class="btn-primary btn">Like</button>
+              
+              </form>
             </div>
           </div>
       </td>

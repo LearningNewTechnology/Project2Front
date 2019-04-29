@@ -53,7 +53,11 @@ export class LoginComponent implements OnInit {
         {
             this.router.navigate(["home"]);
         }
-        else console.log("No user");
+        else {
+          console.log("No user");
+          alert("Sorry. Invalid username or password combination.")
+      
+      }
       },
       error => {
         console.log(error);
