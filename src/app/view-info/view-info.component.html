@@ -30,7 +30,6 @@
 <div style="text-align:center;" class="col-md-6 offset-3">
   <label><h2>Name: {{user.firstName}} {{user.lastName}}</h2></label><br/>
   <label><h2>Email: {{user.email}}</h2></label><br/>
-  <a class=" btn btn-primary" routerLink="/editUser" style="margin-bottom: 15px;">Update Profile</a>
   <table>
     <tr *ngFor="let post of user.postList">
       <div class="card" style="width: 35rem;">

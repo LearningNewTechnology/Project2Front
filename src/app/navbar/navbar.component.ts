@@ -52,7 +52,9 @@ export class NavbarComponent implements OnInit {
         data => {
           if(data !== null && data !== undefined){
             this.sessionService.saveSearchResult(data as User[]);
-            this.router.navigate(["viewSearchResult"]);
+            if(this.router.url != "/viewSearchResult")
+              this.router.navigate(["viewSearchResult"]);
+            else window.location.reload(true);
           }
         },
         error =>{
