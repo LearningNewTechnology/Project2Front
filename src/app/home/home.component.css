@@ -30,11 +30,10 @@ table{
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
 
     position: relative;
-    float: left;
     background-position: 50% 50%;
     background-repeat:   no-repeat;
     background-size:     cover;

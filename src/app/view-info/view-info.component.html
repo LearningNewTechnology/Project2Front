@@ -27,13 +27,13 @@
   </table>
 </div> -->
 
-<div style="text-align:center;">
+<div style="text-align:center;" class="col-md-6 offset-3">
   <label><h2>Name: {{user.firstName}} {{user.lastName}}</h2></label><br/>
   <label><h2>Email: {{user.email}}</h2></label><br/>
   <a class=" btn btn-primary" routerLink="/editUser" style="margin-bottom: 15px;">Update Profile</a>
   <table>
     <tr *ngFor="let post of user.postList">
-      <div class="card">
+      <div class="card" style="width: 35rem;">
           <div class="card-header">           
             <div *ngIf="user.profilePic != null; else elseBlock">
               <img class="img-thumbnail img-fluid profile" src="{{user.profilePic}}">
@@ -47,8 +47,8 @@
           <div class="card-body">
             <h5 class="card-title">{{post.description}}</h5>
             <p class="card-text">{{post.postedDate}}</p>
-            <img class="img-fluid postimage" *ngIf="post.picture != null" [src]="post.picture" width="600px">
-            <p class="card-text" style="margin-top: 10px;">Likes: {{post.likedBy.length}}</p>
+            <img class="img-fluid postimage" *ngIf="post.picture != null" [src]="post.picture">
+            <!-- <p class="card-text" style="margin-top: 10px;">Likes: {{post.likedBy.length}}</p> -->
           </div>
         </div>
     </tr>

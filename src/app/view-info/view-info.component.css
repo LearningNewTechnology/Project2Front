@@ -2,8 +2,16 @@
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
-    width: 90px;
     margin-top: 10px;
+
+    position: relative;
+    float: left;
+    width:  100px;
+    height: 100px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+    object-fit: contain;
 }
 table{
     margin-left:auto; 
@@ -17,7 +25,14 @@ table{
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
-    width: 500px;
+    width: 400px;
+    height: 400px;
+
+    position: relative;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+    object-fit: contain;
 }
 
 .card-header{
