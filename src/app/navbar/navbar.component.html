@@ -7,9 +7,9 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto" style="margin-left: 15px;">
         <li class="nav-item active">
-          <a class="nav-link" (click)="goHome()">Home</a>
+          <a style="cursor: pointer;" class="nav-link" (click)="goHome()">Home</a>
         </li>
         <li>
           <a class="nav-link" style="cursor: pointer;" *ngIf="checkForUser()" (click)="logout()">Logout</a>

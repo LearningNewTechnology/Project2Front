@@ -2,7 +2,7 @@
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
-    width: 100px;
+    width: 90px;
     margin-top: 10px;
 }
 table{
@@ -11,4 +11,20 @@ table{
 }
 .card{
     margin-bottom: 15px;
+}
+
+.postimage{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 500px;
+}
+
+.card-header{
+    text-align: left;
+}
+
+#username{
+    margin-left: 25px;
+    font-size: 25px;
 }

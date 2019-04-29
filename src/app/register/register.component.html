@@ -39,7 +39,7 @@
       </div>
       <div class="col-md-12 text-center form-group">
         <label>Password</label><br>
-        <input type="text" placeholder="Password" formControlName="password"
+        <input type="password" placeholder="Password" formControlName="password"
           [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" /> <br />
         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
           <div *ngIf="f.password.errors.required">Password is required</div>
