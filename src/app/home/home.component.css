@@ -6,8 +6,16 @@
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
-    width: 90px;
     margin-top: 10px;
+
+    position: relative;
+    float: left;
+    width:  100px;
+    height: 100px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+    object-fit: contain;
 }
 
 table{
@@ -23,6 +31,14 @@ table{
     border-radius: 4px;
     padding: 5px;
     width: 500px;
+    height: 500px;
+
+    position: relative;
+    float: left;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+    object-fit: contain;
 }
 
 .card-header{
