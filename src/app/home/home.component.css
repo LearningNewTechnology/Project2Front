@@ -1,3 +1,35 @@
 .description_text{
     resize: none;
 }
+
+.profile{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 90px;
+    margin-top: 10px;
+}
+
+table{
+    margin-left:auto; 
+    margin-right:auto;
+}
+.card{
+    margin-bottom: 15px;
+}
+
+.postimage{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 500px;
+}
+
+.card-header{
+    text-align: left;
+}
+
+#username{
+    margin-left: 25px;
+    font-size: 25px;
+}

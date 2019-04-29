@@ -36,18 +36,18 @@
           <div class="card-header">           
             <div *ngIf="user.profilePic != null; else elseBlock">
               <img class="img-thumbnail img-fluid profile" src="{{user.profilePic}}">
+              <span id="username">{{user.username}}</span>
             </div>
             <ng-template #elseBlock>
               <img class="img-thumbnail img-fluid profile" src="assets/defaultPic.png" >
-            </ng-template> <br/>
-            <h5>{{user.username}}</h5>
-            
+              <span id="username">{{user.username}}</span>
+            </ng-template> <br/>            
           </div>
           <div class="card-body">
             <h5 class="card-title">{{post.description}}</h5>
             <p class="card-text">{{post.postedDate}}</p>
-            <img class="img-fluid" *ngIf="post.picture != null" [src]="post.picture" width="600px">
-            <p class="card-text">Likes: {{post.likedBy.length}}</p>
+            <img class="img-fluid postimage" *ngIf="post.picture != null" [src]="post.picture" width="600px">
+            <p class="card-text" style="margin-top: 10px;">Likes: {{post.likedBy.length}}</p>
           </div>
         </div>
     </tr>
